@@ -1,0 +1,29 @@
+.container {
+  min-height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.text {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.secondaryText {
+  font-size: 20px;
+}
+
+.accent {
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #1976d2;
+}

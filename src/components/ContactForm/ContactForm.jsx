@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addContact } from 'redux/operations';
-import { selectContacts } from 'redux/selectors';
-import { notification } from 'components/Notification/Notification';
+import { addContact } from 'redux/contacts/operations';
+import { selectContacts } from 'redux/contacts/selectors';
+import { notificationInfo } from 'components/Notification/Notification';
 
-import css from './ContactForm.module.css';
+import css from 'common/form.module.css';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -15,19 +15,14 @@ export const ContactForm = () => {
     e.preventDefault();
     const form = e.target;
     const nameValue = form.elements.name.value;
-    const phoneValue = form.elements.number.value;
+    const numberValue = form.elements.number.value;
 
     contacts.find(
-      ({ name, phone }) =>
-        name.toLowerCase() === nameValue.toLowerCase() && phone === phoneValue
+      ({ name, number }) =>
+        name.toLowerCase() === nameValue.toLowerCase() && number === numberValue
     )
-      ? notification(nameValue)
-      : dispatch(
-          addContact({
-            name: nameValue,
-            phone: phoneValue,
-          })
-        );
+      ? notificationInfo(nameValue)
+      : dispatch(addContact({ name: nameValue, number: numberValue }));
     form.reset();
   };
 
